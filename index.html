@@ -108,11 +108,18 @@
             box-shadow: 0 0 10px currentColor;
         }
 
-        .theme-btn[data-theme="dark"]    { background: #0a0e17; }
-        .theme-btn[data-theme="navy"]    { background: #0f1b3d; }
-        .theme-btn[data-theme="purple"]  { background: #1a0a2e; }
-        .theme-btn[data-theme="green"]   { background: #0a1a0a; }
-        .theme-btn[data-theme="slate"]   { background: #1e293b; }
+        .theme-btn[data-theme="light"]     { background: #f0f0f0; border: 1px solid #ccc; }
+        .theme-btn[data-theme="dark"]      { background: #0a0e17; }
+        .theme-btn[data-theme="navy"]      { background: #0f1b3d; }
+        .theme-btn[data-theme="purple"]    { background: #1a0a2e; }
+        .theme-btn[data-theme="green"]     { background: #0a1a0a; }
+        .theme-btn[data-theme="slate"]     { background: #1e293b; }
+        .theme-btn[data-theme="bumblebee"] { background: linear-gradient(135deg, #f9d72f, #e8a317); }
+        .theme-btn[data-theme="cupcake"]   { background: linear-gradient(135deg, #fae7f0, #c9a0dc); }
+        .theme-btn[data-theme="retro"]     { background: linear-gradient(135deg, #e4d8b4, #a66a44); }
+        .theme-btn[data-theme="emerald"]   { background: linear-gradient(135deg, #064e3b, #10b981); }
+        .theme-btn[data-theme="corporate"] { background: linear-gradient(135deg, #1c2b4a, #3b82f6); }
+        .theme-btn[data-theme="cyberpunk"] { background: linear-gradient(135deg, #ff00ff, #fffc00); }
 
         /* ===== NAVBAR ===== */
         .navbar {
@@ -154,6 +161,17 @@
 
         .nav-logo span {
             color: var(--primary);
+        }
+
+        .nav-logo-cycle {
+            color: var(--text-heading);
+            transition: opacity 0.3s ease, transform 0.3s ease;
+            display: inline-block;
+        }
+
+        .nav-logo-cycle.fade-out {
+            opacity: 0;
+            transform: translateY(-8px);
         }
 
         .nav-logo::after {
@@ -475,10 +493,11 @@
             z-index: 2;
         }
 
-        .hero-image .avatar-icon {
-            font-size: 8rem;
-            color: var(--primary);
-            opacity: 0.6;
+        .hero-image .hero-photo {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: top;
         }
 
         .hero-code-float {
@@ -562,8 +581,14 @@
             align-items: center;
             justify-content: center;
             margin-bottom: 25px;
-            font-size: 3rem;
-            color: #fff;
+            overflow: hidden;
+        }
+
+        .about-avatar .about-photo {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: top;
         }
 
         .about-info-list {
@@ -1399,17 +1424,24 @@
 
     <!-- Theme Switcher -->
     <div class="theme-switcher">
-        <div class="theme-btn active" data-theme="dark" title="Dark"></div>
+        <div class="theme-btn" data-theme="light" title="Light"></div>
+        <div class="theme-btn" data-theme="dark" title="Dark"></div>
         <div class="theme-btn" data-theme="navy" title="Navy"></div>
         <div class="theme-btn" data-theme="purple" title="Purple"></div>
         <div class="theme-btn" data-theme="green" title="Forest"></div>
         <div class="theme-btn" data-theme="slate" title="Slate"></div>
+        <div class="theme-btn" data-theme="bumblebee" title="Bumblebee"></div>
+        <div class="theme-btn" data-theme="cupcake" title="Cupcake"></div>
+        <div class="theme-btn" data-theme="retro" title="Retro"></div>
+        <div class="theme-btn" data-theme="emerald" title="Emerald"></div>
+        <div class="theme-btn" data-theme="corporate" title="Corporate"></div>
+        <div class="theme-btn" data-theme="cyberpunk" title="Cyberpunk"></div>
     </div>
 
     <!-- Navbar -->
     <nav class="navbar" id="navbar">
         <div class="nav-container">
-            <a href="#home" class="nav-logo">Sulov<span>.</span></a>
+            <a href="#home" class="nav-logo">Sulov<span>.</span><span class="nav-logo-cycle" id="navLogoCycle">dev</span></a>
             <ul class="nav-links">
                 <li><a href="#home" class="active">Home</a></li>
                 <li><a href="#about">About</a></li>
@@ -1458,15 +1490,15 @@
                 </div>
                 <div class="hero-stats">
                     <div class="stat-item">
-                        <span class="stat-number" data-count="5">0</span>
+                        <span class="stat-number" data-count="2">0</span>
                         <span class="stat-label">Years Exp.</span>
                     </div>
                     <div class="stat-item">
-                        <span class="stat-number" data-count="30">0</span>
+                        <span class="stat-number" data-count="10">0</span>
                         <span class="stat-label">Projects</span>
                     </div>
                     <div class="stat-item">
-                        <span class="stat-number" data-count="20">0</span>
+                        <span class="stat-number" data-count="5">0</span>
                         <span class="stat-label">Happy Clients</span>
                     </div>
                 </div>
@@ -1477,7 +1509,7 @@
                     <div class="hero-code-float">&lt;code /&gt;</div>
                     <div class="hero-code-float">{ fullStack: true }</div>
                     <div class="hero-image">
-                        <i class="fas fa-user-astronaut avatar-icon"></i>
+                        <img src="profile.jpg" alt="Sulov Mitra" class="hero-photo">
                     </div>
                     <div class="hero-code-float">npm run dev</div>
                 </div>
@@ -1498,7 +1530,7 @@
                 <div class="about-image-area reveal">
                     <div class="about-card">
                         <div class="about-avatar">
-                            <i class="fas fa-laptop-code"></i>
+                            <img src="profile.jpg" alt="Sulov Mitra" class="about-photo">
                         </div>
                         <ul class="about-info-list">
                             <li>
@@ -1509,12 +1541,12 @@
                             <li>
                                 <i class="fas fa-envelope"></i>
                                 <span class="label">Email:</span>
-                                <span class="value">sulov@example.com</span>
+                                <span class="value">sulov.me.professional@gmail.com</span>
                             </li>
                             <li>
                                 <i class="fas fa-map-marker-alt"></i>
                                 <span class="label">Location:</span>
-                                <span class="value">India</span>
+                                <span class="value">Duttapukur, West Bengal, India</span>
                             </li>
                             <li>
                                 <i class="fas fa-graduation-cap"></i>
@@ -1524,12 +1556,12 @@
                             <li>
                                 <i class="fas fa-briefcase"></i>
                                 <span class="label">Experience:</span>
-                                <span class="value">5+ Years</span>
+                                <span class="value">2+ Years</span>
                             </li>
                             <li>
                                 <i class="fas fa-globe"></i>
                                 <span class="label">Languages:</span>
-                                <span class="value">English, Hindi, Bengali</span>
+                                <span class="value">Bengali, English, Hindi</span>
                             </li>
                         </ul>
                     </div>
@@ -1538,7 +1570,7 @@
                 <div class="about-text-area reveal">
                     <h3>I'm Sulov Mitra, a <span>Creative IT Professional</span></h3>
                     <p>
-                        With over 5 years of experience in software development and IT solutions,
+                        With over 2 years of experience in software development and IT solutions,
                         I specialize in building modern web applications, cloud infrastructure, and
                         scalable systems. I thrive on transforming complex problems into elegant,
                         user-friendly solutions.
@@ -1556,12 +1588,14 @@
                         <span class="skill-tag"><i class="fab fa-react"></i>React</span>
                         <span class="skill-tag"><i class="fab fa-node-js"></i>Node.js</span>
                         <span class="skill-tag"><i class="fab fa-python"></i>Python</span>
-                        <span class="skill-tag"><i class="fas fa-database"></i>MongoDB</span>
+                        <span class="skill-tag"><i class="fab fa-java"></i>Java</span>
+                        <span class="skill-tag"><i class="fas fa-code"></i>C</span>
+                        <span class="skill-tag"><i class="fas fa-database"></i>SQL</span>
+                        <span class="skill-tag"><i class="fas fa-brain"></i>AI-ML</span>
                         <span class="skill-tag"><i class="fab fa-aws"></i>AWS</span>
                         <span class="skill-tag"><i class="fab fa-docker"></i>Docker</span>
                         <span class="skill-tag"><i class="fab fa-git-alt"></i>Git</span>
                         <span class="skill-tag"><i class="fab fa-linux"></i>Linux</span>
-                        <span class="skill-tag"><i class="fas fa-shield-alt"></i>Cybersecurity</span>
                     </div>
                 </div>
             </div>
@@ -1634,7 +1668,7 @@
                         </div>
                         <div class="project-links">
                             <a href="#" title="Live Demo"><i class="fas fa-external-link-alt"></i></a>
-                            <a href="#" title="Source Code"><i class="fab fa-github"></i></a>
+                            <a href="https://github.com/Sulovb2" target="_blank" title="Source Code"><i class="fab fa-github"></i></a>
                         </div>
                     </div>
                 </div>
@@ -1651,7 +1685,7 @@
                         </div>
                         <div class="project-links">
                             <a href="#" title="Live Demo"><i class="fas fa-external-link-alt"></i></a>
-                            <a href="#" title="Source Code"><i class="fab fa-github"></i></a>
+                            <a href="https://github.com/Sulovb2" target="_blank" title="Source Code"><i class="fab fa-github"></i></a>
                         </div>
                     </div>
                 </div>
@@ -1668,7 +1702,7 @@
                         </div>
                         <div class="project-links">
                             <a href="#" title="Live Demo"><i class="fas fa-external-link-alt"></i></a>
-                            <a href="#" title="Source Code"><i class="fab fa-github"></i></a>
+                            <a href="https://github.com/Sulovb2" target="_blank" title="Source Code"><i class="fab fa-github"></i></a>
                         </div>
                     </div>
                 </div>
@@ -1694,7 +1728,7 @@
                         <div class="contact-item-icon"><i class="fas fa-envelope"></i></div>
                         <div>
                             <h4>Email</h4>
-                            <p>sulov@example.com</p>
+                            <p>sulov.me.professional@gmail.com</p>
                         </div>
                     </div>
 
@@ -1702,58 +1736,61 @@
                         <div class="contact-item-icon"><i class="fas fa-phone-alt"></i></div>
                         <div>
                             <h4>Phone</h4>
-                            <p>+91 XXXXX XXXXX</p>
+                            <p>+91 7047566478</p>
                         </div>
                     </div>
 
                     <div class="contact-item">
-                        <div class="contact-item-icon"><i class="fas fa-map-marker-alt"></i></div>
+                        <div class="contact-item-icon"><i class="fab fa-whatsapp"></i></div>
                         <div>
-                            <h4>Location</h4>
-                            <p>India</p>
+                            <h4>WhatsApp</h4>
+                            <p><a href="https://wa.me/+917047566478" target="_blank" style="color: var(--text-secondary); text-decoration: none;">+91 7047566478</a></p>
                         </div>
                     </div>
 
                     <div class="contact-item">
-                        <div class="contact-item-icon"><i class="fab fa-youtube"></i></div>
+                        <div class="contact-item-icon"><i class="fab fa-linkedin-in"></i></div>
                         <div>
-                            <h4>YouTube</h4>
-                            <p>Channel ID</p>
+                            <h4>LinkedIn</h4>
+                            <p><a href="https://www.linkedin.com/in/sulovb2" target="_blank" style="color: var(--text-secondary); text-decoration: none;">linkedin.com/in/sulovb2</a></p>
                         </div>
                     </div>
 
                     <div class="contact-socials">
-                        <a href="#" title="GitHub"><i class="fab fa-github"></i></a>
-                        <a href="#" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-                        <a href="#" title="Twitter"><i class="fab fa-twitter"></i></a>
-                        <a href="#" title="YouTube"><i class="fab fa-youtube"></i></a>
-                        <a href="#" title="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="https://github.com/Sulovb2" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
+                        <a href="https://x.com/sulovb2" target="_blank" title="X"><i class="fab fa-x-twitter"></i></a>
+                        <a href="https://www.youtube.com/@SulovMitra" target="_blank" title="YouTube"><i class="fab fa-youtube"></i></a>
+                        <a href="https://www.instagram.com/sulov_b2/" target="_blank" title="Instagram"><i class="fab fa-instagram"></i></a>
                     </div>
                 </div>
 
                 <div class="contact-form-card reveal">
-                    <form id="contactForm">
+                    <form id="contactForm" action="https://api.web3forms.com/submit" method="POST">
+                        <input type="hidden" name="access_key" value="4e216843-0b16-451a-9e08-93fb575f575d">
+                        <input type="hidden" name="subject" id="hiddenSubject" value="New Contact Form Message">
+                        <input type="hidden" name="from_name" value="Portfolio Contact Form">
+                        <input type="checkbox" name="botcheck" style="display:none">
                         <div class="form-row">
                             <div class="form-group">
                                 <label for="firstName">First Name</label>
-                                <input type="text" id="firstName" name="firstName" placeholder="John" required>
+                                <input type="text" id="firstName" name="First Name" placeholder="John" required>
                             </div>
                             <div class="form-group">
                                 <label for="lastName">Last Name</label>
-                                <input type="text" id="lastName" name="lastName" placeholder="Doe" required>
+                                <input type="text" id="lastName" name="Last Name" placeholder="Doe" required>
                             </div>
                         </div>
                         <div class="form-group">
                             <label for="email">Email Address</label>
-                            <input type="email" id="email" name="email" placeholder="john@example.com" required>
+                            <input type="email" id="email" name="Email" placeholder="john@example.com" required>
                         </div>
                         <div class="form-group">
                             <label for="subject">Subject</label>
-                            <input type="text" id="subject" name="subject" placeholder="Project Inquiry" required>
+                            <input type="text" id="subject" name="Subject" placeholder="Project Inquiry" required>
                         </div>
                         <div class="form-group">
                             <label for="message">Message</label>
-                            <textarea id="message" name="message" placeholder="Tell me about your project..." required></textarea>
+                            <textarea id="message" name="Message" placeholder="Tell me about your project..." required></textarea>
                         </div>
                         <button type="submit" class="btn btn-primary btn-submit">
                             <i class="fas fa-paper-plane"></i> Send Message
@@ -1772,12 +1809,11 @@
                 <h3>Sulov<span>.</span>Mitra</h3>
                 <p>IT Professional passionate about building innovative solutions and pushing the boundaries of technology. Let's create something amazing together.</p>
                 <div class="footer-social">
-                    <a href="#" title="GitHub"><i class="fab fa-github"></i></a>
-                    <a href="#" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-                    <a href="#" title="Twitter"><i class="fab fa-twitter"></i></a>
-                    <a href="#" title="YouTube"><i class="fab fa-youtube"></i></a>
-                    <a href="#" title="Instagram"><i class="fab fa-instagram"></i></a>
-                    <a href="#" title="Dev.to"><i class="fab fa-dev"></i></a>
+                    <a href="https://github.com/Sulovb2" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
+                    <a href="https://www.linkedin.com/in/sulovb2" target="_blank" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="https://x.com/sulovb2" target="_blank" title="X"><i class="fab fa-x-twitter"></i></a>
+                    <a href="https://www.youtube.com/@SulovMitra" target="_blank" title="YouTube"><i class="fab fa-youtube"></i></a>
+                    <a href="https://www.instagram.com/sulov_b2/" target="_blank" title="Instagram"><i class="fab fa-instagram"></i></a>
                 </div>
             </div>
 
@@ -2024,30 +2060,52 @@
 
         // ===== THEME SWITCHER =====
         const themes = {
-            dark:   { bg: '#0a0e17', card: 'rgba(255,255,255,0.05)', glass: 'rgba(255,255,255,0.08)' },
-            navy:   { bg: '#0f1b3d', card: 'rgba(255,255,255,0.06)', glass: 'rgba(255,255,255,0.09)' },
-            purple: { bg: '#1a0a2e', card: 'rgba(255,255,255,0.05)', glass: 'rgba(255,255,255,0.08)' },
-            green:  { bg: '#0a1a0a', card: 'rgba(255,255,255,0.05)', glass: 'rgba(255,255,255,0.07)' },
-            slate:  { bg: '#1e293b', card: 'rgba(255,255,255,0.06)', glass: 'rgba(255,255,255,0.09)' }
+            light:     { bg: '#e0e0e0', card: 'rgba(0,0,0,0.06)', glass: 'rgba(0,0,0,0.08)', textPrimary: '#1a1a1a', textSecondary: '#444', textHeading: '#000', borderGlass: 'rgba(0,0,0,0.15)', primary: '#0077aa', primaryDark: '#005f8a', secondary: '#5a1fd6', accent: '#d94545' },
+            dark:      { bg: '#0a0e17', card: 'rgba(255,255,255,0.05)', glass: 'rgba(255,255,255,0.08)', textPrimary: '#e4e4e7', textSecondary: '#a1a1aa', textHeading: '#ffffff', borderGlass: 'rgba(255,255,255,0.12)', primary: '#00d4ff', primaryDark: '#00a8cc', secondary: '#7b2ff7', accent: '#ff6b6b' },
+            navy:      { bg: '#0f1b3d', card: 'rgba(255,255,255,0.06)', glass: 'rgba(255,255,255,0.09)', textPrimary: '#c8d6e5', textSecondary: '#8395a7', textHeading: '#dfe6ed', borderGlass: 'rgba(100,150,255,0.15)', primary: '#48dbfb', primaryDark: '#0abde3', secondary: '#5f6ff7', accent: '#ff9f43' },
+            purple:    { bg: '#1a0a2e', card: 'rgba(255,255,255,0.05)', glass: 'rgba(255,255,255,0.08)', textPrimary: '#ddd0f0', textSecondary: '#a98fd4', textHeading: '#f0e6ff', borderGlass: 'rgba(180,100,255,0.15)', primary: '#bf5af2', primaryDark: '#9b3ed9', secondary: '#ff6bfa', accent: '#ff6b9d' },
+            green:     { bg: '#0a1a0a', card: 'rgba(255,255,255,0.05)', glass: 'rgba(255,255,255,0.07)', textPrimary: '#c8e6c9', textSecondary: '#81c784', textHeading: '#e8f5e9', borderGlass: 'rgba(100,255,100,0.12)', primary: '#66ff66', primaryDark: '#44cc44', secondary: '#a5d6a7', accent: '#ffeb3b' },
+            slate:     { bg: '#1e293b', card: 'rgba(255,255,255,0.06)', glass: 'rgba(255,255,255,0.09)', textPrimary: '#cbd5e1', textSecondary: '#94a3b8', textHeading: '#f1f5f9', borderGlass: 'rgba(150,180,220,0.12)', primary: '#f472b6', primaryDark: '#db2777', secondary: '#e879f9', accent: '#38bdf8' },
+            bumblebee: { bg: '#fffbeb', card: 'rgba(0,0,0,0.04)', glass: 'rgba(0,0,0,0.05)', textPrimary: '#333', textSecondary: '#665c3e', textHeading: '#1a1400', borderGlass: 'rgba(0,0,0,0.1)', primary: '#e8a317', primaryDark: '#c4890e', secondary: '#f9d72f', accent: '#e87217' },
+            cupcake:   { bg: '#faf7f5', card: 'rgba(150,100,150,0.06)', glass: 'rgba(150,100,150,0.08)', textPrimary: '#4a3548', textSecondary: '#8a6f88', textHeading: '#2d1b2e', borderGlass: 'rgba(150,100,150,0.15)', primary: '#c9a0dc', primaryDark: '#a77dbe', secondary: '#f0a6ca', accent: '#ef9fbc' },
+            retro:     { bg: '#e4d8b4', card: 'rgba(100,60,30,0.08)', glass: 'rgba(100,60,30,0.1)', textPrimary: '#3d2c1e', textSecondary: '#6b5240', textHeading: '#2a1a0e', borderGlass: 'rgba(100,60,30,0.15)', primary: '#a66a44', primaryDark: '#8b5535', secondary: '#d4956b', accent: '#c05746' },
+            emerald:   { bg: '#064e3b', card: 'rgba(255,255,255,0.06)', glass: 'rgba(255,255,255,0.08)', textPrimary: '#d1fae5', textSecondary: '#6ee7b7', textHeading: '#ecfdf5', borderGlass: 'rgba(255,255,255,0.12)', primary: '#10b981', primaryDark: '#059669', secondary: '#34d399', accent: '#f59e0b' },
+            corporate: { bg: '#1c2b4a', card: 'rgba(255,255,255,0.05)', glass: 'rgba(255,255,255,0.07)', textPrimary: '#cbd5e1', textSecondary: '#94a3b8', textHeading: '#f1f5f9', borderGlass: 'rgba(255,255,255,0.1)', primary: '#3b82f6', primaryDark: '#2563eb', secondary: '#60a5fa', accent: '#f97316' },
+            cyberpunk: { bg: '#0d0014', card: 'rgba(255,0,255,0.06)', glass: 'rgba(255,0,255,0.08)', textPrimary: '#e4e4e7', textSecondary: '#c88aff', textHeading: '#fffc00', borderGlass: 'rgba(255,0,255,0.2)', primary: '#ff00ff', primaryDark: '#cc00cc', secondary: '#fffc00', accent: '#00fff5' }
         };
 
+        function applyTheme(theme) {
+            const t = themes[theme];
+            document.documentElement.style.setProperty('--bg-dark', t.bg);
+            document.documentElement.style.setProperty('--bg-card', t.card);
+            document.documentElement.style.setProperty('--bg-glass', t.glass);
+            document.documentElement.style.setProperty('--text-primary', t.textPrimary);
+            document.documentElement.style.setProperty('--text-secondary', t.textSecondary);
+            document.documentElement.style.setProperty('--text-heading', t.textHeading);
+            document.documentElement.style.setProperty('--border-glass', t.borderGlass);
+            document.documentElement.style.setProperty('--primary', t.primary);
+            document.documentElement.style.setProperty('--primary-dark', t.primaryDark);
+            document.documentElement.style.setProperty('--secondary', t.secondary);
+            document.documentElement.style.setProperty('--accent', t.accent);
+            document.documentElement.style.setProperty('--shadow-glow', `0 0 30px ${t.primary}26`);
+            document.querySelectorAll('.theme-btn').forEach(b => b.classList.remove('active'));
+            const activeBtn = document.querySelector(`.theme-btn[data-theme="${theme}"]`);
+            if (activeBtn) activeBtn.classList.add('active');
+            localStorage.setItem('portfolio-theme', theme);
+        }
+
         document.querySelectorAll('.theme-btn').forEach(btn => {
-            btn.addEventListener('click', () => {
-                const theme = btn.dataset.theme;
-                const t = themes[theme];
-                document.documentElement.style.setProperty('--bg-dark', t.bg);
-                document.documentElement.style.setProperty('--bg-card', t.card);
-                document.documentElement.style.setProperty('--bg-glass', t.glass);
-                document.querySelectorAll('.theme-btn').forEach(b => b.classList.remove('active'));
-                btn.classList.add('active');
-                localStorage.setItem('portfolio-theme', theme);
-            });
+            btn.addEventListener('click', () => applyTheme(btn.dataset.theme));
         });
 
-        // Load saved theme
+        // Load saved theme or auto-detect based on time of day
         const savedTheme = localStorage.getItem('portfolio-theme');
         if (savedTheme && themes[savedTheme]) {
-            document.querySelector(`.theme-btn[data-theme="${savedTheme}"]`)?.click();
+            applyTheme(savedTheme);
+        } else {
+            const hour = new Date().getHours();
+            // Daytime (6 AM - 6 PM) = light, Nighttime = dark
+            applyTheme(hour >= 6 && hour < 18 ? 'light' : 'dark');
         }
 
         // ===== CONTACT FORM =====
@@ -2056,24 +2114,61 @@
             const status = document.getElementById('formStatus');
             const btn = this.querySelector('.btn-submit');
 
+            // Sync subject to hidden field
+            document.getElementById('hiddenSubject').value = this.querySelector('#subject').value || 'New Contact Form Message';
+
             btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
             btn.disabled = true;
 
-            // Simulate sending (replace with actual backend call)
-            setTimeout(() => {
-                status.textContent = 'Message sent successfully! I\'ll get back to you soon.';
-                status.className = 'form-status success';
-                btn.innerHTML = '<i class="fas fa-check"></i> Sent!';
+            const formData = new FormData(this);
+
+            fetch(this.action, {
+                method: 'POST',
+                body: formData,
+                headers: { 'Accept': 'application/json' }
+            })
+            .then(response => {
+                if (response.ok) {
+                    status.textContent = 'Message sent successfully! I\'ll get back to you soon.';
+                    status.className = 'form-status success';
+                    btn.innerHTML = '<i class="fas fa-check"></i> Sent!';
+                    this.reset();
+                } else {
+                    throw new Error('Failed to send');
+                }
 
                 setTimeout(() => {
-                    this.reset();
                     btn.innerHTML = '<i class="fas fa-paper-plane"></i> Send Message';
                     btn.disabled = false;
                     status.textContent = '';
                     status.className = 'form-status';
                 }, 3000);
-            }, 1500);
+            })
+            .catch(() => {
+                status.textContent = 'Oops! Something went wrong. Please try again.';
+                status.className = 'form-status error';
+                btn.innerHTML = '<i class="fas fa-paper-plane"></i> Send Message';
+                btn.disabled = false;
+            });
         });
+
+        // ===== NAV LOGO WORD CYCLE =====
+        (function() {
+            const words = ['dev', 'code', 'build', 'host', 'hack', 'ship', 'craft', 'create', 'debug', 'push', 'deploy', 'love', 'fun', 'passion'];
+            const el = document.getElementById('navLogoCycle');
+            let lastIndex = 0;
+            function shuffle() {
+                let next;
+                do { next = Math.floor(Math.random() * words.length); } while (next === lastIndex);
+                lastIndex = next;
+                el.classList.add('fade-out');
+                setTimeout(() => {
+                    el.textContent = words[next];
+                    el.classList.remove('fade-out');
+                }, 300);
+            }
+            setInterval(shuffle, 3000);
+        })();
 
         // ===== SMOOTH SCROLL FOR ALL ANCHOR LINKS =====
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
