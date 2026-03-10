@@ -672,78 +672,6 @@
         }
 
         /* ===== SERVICES / WHAT I DO ===== */
-        .services-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 24px;
-        }
-
-        .service-card {
-            background: var(--bg-glass);
-            backdrop-filter: blur(16px);
-            border: 1px solid var(--border-glass);
-            border-radius: 20px;
-            padding: 35px 30px;
-            transition: var(--transition);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .service-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 3px;
-            background: linear-gradient(90deg, var(--primary), var(--secondary));
-            transform: scaleX(0);
-            transform-origin: left;
-            transition: transform 0.4s ease;
-        }
-
-        .service-card:hover::before {
-            transform: scaleX(1);
-        }
-
-        .service-card:hover {
-            transform: translateY(-8px);
-            box-shadow: var(--shadow-glow);
-            border-color: var(--primary);
-        }
-
-        .service-icon {
-            width: 60px;
-            height: 60px;
-            border-radius: 16px;
-            background: linear-gradient(135deg, rgba(0, 212, 255, 0.15), rgba(123, 47, 247, 0.15));
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.5rem;
-            color: var(--primary);
-            margin-bottom: 22px;
-            transition: var(--transition);
-        }
-
-        .service-card:hover .service-icon {
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
-            color: #fff;
-            transform: scale(1.1);
-        }
-
-        .service-card h3 {
-            font-size: 1.2rem;
-            color: var(--text-heading);
-            margin-bottom: 12px;
-        }
-
-        .service-card p {
-            color: var(--text-secondary);
-            font-size: 0.92rem;
-            line-height: 1.7;
-        }
-
         /* ===== PROJECTS SECTION ===== */
         .projects-grid {
             display: grid;
@@ -1445,7 +1373,6 @@
             <ul class="nav-links">
                 <li><a href="#home" class="active">Home</a></li>
                 <li><a href="#about">About</a></li>
-                <li><a href="#services">Services</a></li>
                 <li><a href="#projects">Projects</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
@@ -1462,7 +1389,6 @@
         <ul class="mobile-menu-links">
             <li><a href="#home">Home</a></li>
             <li><a href="#about">About</a></li>
-            <li><a href="#services">Services</a></li>
             <li><a href="#projects">Projects</a></li>
             <li><a href="#contact">Contact</a></li>
         </ul>
@@ -1487,20 +1413,6 @@
                     <a href="#projects" class="btn btn-outline">
                         <i class="fas fa-briefcase"></i> View Projects
                     </a>
-                </div>
-                <div class="hero-stats">
-                    <div class="stat-item">
-                        <span class="stat-number" data-count="2">0</span>
-                        <span class="stat-label">Years Exp.</span>
-                    </div>
-                    <div class="stat-item">
-                        <span class="stat-number" data-count="10">0</span>
-                        <span class="stat-label">Projects</span>
-                    </div>
-                    <div class="stat-item">
-                        <span class="stat-number" data-count="5">0</span>
-                        <span class="stat-label">Happy Clients</span>
-                    </div>
                 </div>
             </div>
             <div class="hero-visual">
@@ -1556,7 +1468,7 @@
                             <li>
                                 <i class="fas fa-briefcase"></i>
                                 <span class="label">Experience:</span>
-                                <span class="value">2+ Years</span>
+                                <span class="value">Fresher</span>
                             </li>
                             <li>
                                 <i class="fas fa-globe"></i>
@@ -1568,17 +1480,9 @@
                 </div>
 
                 <div class="about-text-area reveal">
-                    <h3>I'm Sulov Mitra, a <span>Creative IT Professional</span></h3>
+                    <h3>I'm Sulov Mitra, an <span>Aspiring Software Developer</span></h3>
                     <p>
-                        With over 2 years of experience in software development and IT solutions,
-                        I specialize in building modern web applications, cloud infrastructure, and
-                        scalable systems. I thrive on transforming complex problems into elegant,
-                        user-friendly solutions.
-                    </p>
-                    <p>
-                        My approach combines technical expertise with creative problem-solving.
-                        Whether it's developing full-stack applications, managing databases, or
-                        deploying cloud-native solutions, I bring dedication and precision to every project.
+                        Information Technology student passionate about software development, web technologies, and cloud computing. I enjoy building practical applications and continuously learning new technologies. Currently seeking opportunities to apply my skills and grow as a software engineer.
                     </p>
 
                     <div class="skills-cloud">
@@ -1602,50 +1506,6 @@
         </div>
     </section>
 
-    <!-- Services Section -->
-    <section class="section" id="services">
-        <div class="container">
-            <div class="section-header reveal">
-                <span class="section-tag">&lt; Services /&gt;</span>
-                <h2 class="section-title">What I <span>Do</span></h2>
-                <div class="section-line"></div>
-            </div>
-
-            <div class="services-grid">
-                <div class="service-card reveal">
-                    <div class="service-icon"><i class="fas fa-code"></i></div>
-                    <h3>Web Development</h3>
-                    <p>Building responsive, high-performance web applications using modern frameworks like React, Node.js, and Next.js with clean, maintainable code.</p>
-                </div>
-                <div class="service-card reveal">
-                    <div class="service-icon"><i class="fas fa-mobile-alt"></i></div>
-                    <h3>App Development</h3>
-                    <p>Creating cross-platform mobile applications with intuitive UI/UX design, seamless performance, and native-like user experiences.</p>
-                </div>
-                <div class="service-card reveal">
-                    <div class="service-icon"><i class="fas fa-cloud"></i></div>
-                    <h3>Cloud Solutions</h3>
-                    <p>Designing and deploying scalable cloud infrastructure on AWS, Azure, and GCP with CI/CD pipelines and containerized deployments.</p>
-                </div>
-                <div class="service-card reveal">
-                    <div class="service-icon"><i class="fas fa-shield-alt"></i></div>
-                    <h3>IT Consulting</h3>
-                    <p>Providing strategic technology consulting, system architecture reviews, security audits, and digital transformation roadmaps.</p>
-                </div>
-                <div class="service-card reveal">
-                    <div class="service-icon"><i class="fas fa-database"></i></div>
-                    <h3>Database Design</h3>
-                    <p>Architecting efficient database schemas, optimizing queries, and managing both SQL and NoSQL databases for peak performance.</p>
-                </div>
-                <div class="service-card reveal">
-                    <div class="service-icon"><i class="fas fa-robot"></i></div>
-                    <h3>AI & Automation</h3>
-                    <p>Implementing AI-powered solutions, workflow automation, and intelligent systems that streamline processes and boost productivity.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
     <!-- Projects Section -->
     <section class="section" id="projects">
         <div class="container">
@@ -1658,51 +1518,17 @@
             <div class="projects-grid">
                 <div class="project-card reveal">
                     <div class="project-thumbnail">
-                        <i class="fas fa-shopping-cart"></i>
+                        <i class="fas fa-user-circle"></i>
                     </div>
                     <div class="project-info">
-                        <h3>E-Commerce Platform</h3>
-                        <p>A full-stack e-commerce solution with real-time inventory management, payment gateway integration, and admin dashboard.</p>
+                        <h3>Portfolio Website</h3>
+                        <p>A modern, responsive personal portfolio website showcasing projects, skills, and experience with sleek glassmorphism design.</p>
                         <div class="project-tech">
-                            <span>React</span><span>Node.js</span><span>MongoDB</span><span>Stripe</span>
+                            <span>HTML</span><span>CSS</span><span>JavaScript</span>
                         </div>
                         <div class="project-links">
-                            <a href="#" title="Live Demo"><i class="fas fa-external-link-alt"></i></a>
-                            <a href="https://github.com/Sulovb2" target="_blank" title="Source Code"><i class="fab fa-github"></i></a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="project-card reveal">
-                    <div class="project-thumbnail">
-                        <i class="fas fa-chart-line"></i>
-                    </div>
-                    <div class="project-info">
-                        <h3>Analytics Dashboard</h3>
-                        <p>Real-time data visualization dashboard with interactive charts, custom reports, and automated email summaries.</p>
-                        <div class="project-tech">
-                            <span>Next.js</span><span>D3.js</span><span>PostgreSQL</span><span>AWS</span>
-                        </div>
-                        <div class="project-links">
-                            <a href="#" title="Live Demo"><i class="fas fa-external-link-alt"></i></a>
-                            <a href="https://github.com/Sulovb2" target="_blank" title="Source Code"><i class="fab fa-github"></i></a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="project-card reveal">
-                    <div class="project-thumbnail">
-                        <i class="fas fa-comments"></i>
-                    </div>
-                    <div class="project-info">
-                        <h3>Chat Application</h3>
-                        <p>Real-time messaging app with end-to-end encryption, file sharing, video calls, and group chat functionality.</p>
-                        <div class="project-tech">
-                            <span>React</span><span>Socket.io</span><span>WebRTC</span><span>Redis</span>
-                        </div>
-                        <div class="project-links">
-                            <a href="#" title="Live Demo"><i class="fas fa-external-link-alt"></i></a>
-                            <a href="https://github.com/Sulovb2" target="_blank" title="Source Code"><i class="fab fa-github"></i></a>
+                            <a href="https://sulov.online" target="_blank" title="Live Demo"><i class="fas fa-external-link-alt"></i></a>
+                            <a href="https://github.com/Sulovb2/My-Portfolio" target="_blank" title="Source Code"><i class="fab fa-github"></i></a>
                         </div>
                     </div>
                 </div>
@@ -1756,12 +1582,6 @@
                         </div>
                     </div>
 
-                    <div class="contact-socials">
-                        <a href="https://github.com/Sulovb2" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
-                        <a href="https://x.com/sulovb2" target="_blank" title="X"><i class="fab fa-x-twitter"></i></a>
-                        <a href="https://www.youtube.com/@SulovMitra" target="_blank" title="YouTube"><i class="fab fa-youtube"></i></a>
-                        <a href="https://www.instagram.com/sulov_b2/" target="_blank" title="Instagram"><i class="fab fa-instagram"></i></a>
-                    </div>
                 </div>
 
                 <div class="contact-form-card reveal">
@@ -1822,22 +1642,11 @@
                 <ul>
                     <li><a href="#home"><i class="fas fa-chevron-right"></i> Home</a></li>
                     <li><a href="#about"><i class="fas fa-chevron-right"></i> About</a></li>
-                    <li><a href="#services"><i class="fas fa-chevron-right"></i> Services</a></li>
                     <li><a href="#projects"><i class="fas fa-chevron-right"></i> Projects</a></li>
                     <li><a href="#contact"><i class="fas fa-chevron-right"></i> Contact</a></li>
                 </ul>
             </div>
 
-            <div class="footer-links">
-                <h4>Services</h4>
-                <ul>
-                    <li><a href="#services"><i class="fas fa-chevron-right"></i> Web Development</a></li>
-                    <li><a href="#services"><i class="fas fa-chevron-right"></i> App Development</a></li>
-                    <li><a href="#services"><i class="fas fa-chevron-right"></i> Cloud Solutions</a></li>
-                    <li><a href="#services"><i class="fas fa-chevron-right"></i> IT Consulting</a></li>
-                    <li><a href="#services"><i class="fas fa-chevron-right"></i> AI & Automation</a></li>
-                </ul>
-            </div>
         </div>
 
         <div class="footer-bottom">
