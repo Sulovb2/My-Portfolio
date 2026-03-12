@@ -613,6 +613,7 @@
         .about-info-list li span.label {
             color: var(--text-secondary);
             min-width: 90px;
+            flex-shrink: 0;
         }
 
         .about-info-list li span.value {
@@ -1409,12 +1410,12 @@
             .about-card { padding: 25px; }
 
             .about-info-list li {
-                flex-wrap: wrap;
                 font-size: 0.9rem;
             }
 
             .about-info-list li span.value {
                 word-break: break-word;
+                min-width: 0;
             }
 
             .projects-grid {
