@@ -110,8 +110,6 @@
 
         .theme-btn[data-theme="light"]     { background: #f0f0f0; border: 1px solid #ccc; }
         .theme-btn[data-theme="dark"]      { background: #0a0e17; }
-        .theme-btn[data-theme="navy"]      { background: #0f1b3d; }
-        .theme-btn[data-theme="purple"]    { background: #1a0a2e; }
         .theme-btn[data-theme="green"]     { background: #0a1a0a; }
         .theme-btn[data-theme="slate"]     { background: #1e293b; }
         .theme-btn[data-theme="bumblebee"] { background: linear-gradient(135deg, #f9d72f, #e8a317); }
@@ -933,6 +931,97 @@
             resize: vertical;
         }
 
+        /* File Upload */
+        .file-upload-area {
+            border: 2px dashed var(--border-glass);
+            border-radius: 12px;
+            padding: 24px;
+            text-align: center;
+            cursor: pointer;
+            transition: var(--transition);
+            background: rgba(255, 255, 255, 0.02);
+            position: relative;
+        }
+
+        .file-upload-area:hover,
+        .file-upload-area.dragover {
+            border-color: var(--primary);
+            background: rgba(0, 212, 255, 0.04);
+        }
+
+        .file-upload-area i {
+            font-size: 1.8rem;
+            color: var(--text-secondary);
+            margin-bottom: 8px;
+            display: block;
+            transition: var(--transition);
+        }
+
+        .file-upload-area:hover i,
+        .file-upload-area.dragover i {
+            color: var(--primary);
+        }
+
+        .file-upload-area p {
+            color: var(--text-secondary);
+            font-size: 0.85rem;
+            margin: 0;
+        }
+
+        .file-upload-area p span {
+            color: var(--primary);
+            font-weight: 600;
+        }
+
+        .file-upload-area small {
+            color: var(--text-secondary);
+            opacity: 0.5;
+            font-size: 0.75rem;
+            display: block;
+            margin-top: 6px;
+        }
+
+        .file-upload-area input[type="file"] {
+            position: absolute;
+            inset: 0;
+            opacity: 0;
+            cursor: pointer;
+        }
+
+        .file-list {
+            margin-top: 10px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .file-chip {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: rgba(255, 255, 255, 0.06);
+            border: 1px solid var(--border-glass);
+            border-radius: 8px;
+            padding: 6px 12px;
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+        }
+
+        .file-chip i {
+            font-size: 0.75rem;
+        }
+
+        .file-chip .remove-file {
+            cursor: pointer;
+            color: var(--accent);
+            margin-left: 2px;
+            transition: var(--transition);
+        }
+
+        .file-chip .remove-file:hover {
+            opacity: 0.7;
+        }
+
         .btn-submit {
             width: 100%;
             padding: 16px;
@@ -1561,8 +1650,6 @@
     <div class="theme-switcher">
         <div class="theme-btn" data-theme="light" title="Light"></div>
         <div class="theme-btn" data-theme="dark" title="Dark"></div>
-        <div class="theme-btn" data-theme="navy" title="Navy"></div>
-        <div class="theme-btn" data-theme="purple" title="Purple"></div>
         <div class="theme-btn" data-theme="green" title="Forest"></div>
         <div class="theme-btn" data-theme="slate" title="Slate"></div>
         <div class="theme-btn" data-theme="bumblebee" title="Bumblebee"></div>
@@ -1814,10 +1901,26 @@
                         </div>
                     </div>
 
+                    <div class="contact-item">
+                        <div class="contact-item-icon"><i class="fab fa-instagram"></i></div>
+                        <div>
+                            <h4>Instagram</h4>
+                            <p><a href="https://www.instagram.com/sulov_b2/" target="_blank" style="color: var(--text-secondary); text-decoration: none;">instagram.com/sulov_b2</a></p>
+                        </div>
+                    </div>
+
+                    <div class="contact-item">
+                        <div class="contact-item-icon"><i class="fab fa-youtube"></i></div>
+                        <div>
+                            <h4>YouTube</h4>
+                            <p><a href="https://www.youtube.com/@SulovMitra" target="_blank" style="color: var(--text-secondary); text-decoration: none;">youtube.com/@SulovMitra</a></p>
+                        </div>
+                    </div>
+
                 </div>
 
                 <div class="contact-form-card reveal">
-                    <form id="contactForm" action="https://api.web3forms.com/submit" method="POST">
+                    <form id="contactForm" action="https://api.web3forms.com/submit" method="POST" enctype="multipart/form-data">
                         <input type="hidden" name="access_key" value="4e216843-0b16-451a-9e08-93fb575f575d">
                         <input type="hidden" name="subject" id="hiddenSubject" value="New Contact Form Message">
                         <input type="hidden" name="from_name" value="Portfolio Contact Form">
@@ -1843,6 +1946,16 @@
                         <div class="form-group">
                             <label for="message">Message</label>
                             <textarea id="message" name="Message" placeholder="Tell me about your project..." required></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label>Attachments <small style="opacity:0.5; font-weight:400;">(optional)</small></label>
+                            <div class="file-upload-area" id="fileUploadArea">
+                                <i class="fas fa-cloud-upload-alt"></i>
+                                <p>Drag & drop files here or <span>browse</span></p>
+                                <small>Images, PDFs, documents — Max 5MB per file</small>
+                                <input type="file" name="attachment" id="fileInput" multiple>
+                            </div>
+                            <div class="file-list" id="fileList"></div>
                         </div>
                         <button type="submit" class="btn btn-primary btn-submit">
                             <i class="fas fa-paper-plane"></i> Send Message
@@ -2103,8 +2216,6 @@
         const themes = {
             light:     { bg: '#e0e0e0', card: 'rgba(0,0,0,0.06)', glass: 'rgba(0,0,0,0.08)', textPrimary: '#1a1a1a', textSecondary: '#444', textHeading: '#000', borderGlass: 'rgba(0,0,0,0.15)', primary: '#0077aa', primaryDark: '#005f8a', secondary: '#5a1fd6', accent: '#d94545' },
             dark:      { bg: '#0a0e17', card: 'rgba(255,255,255,0.05)', glass: 'rgba(255,255,255,0.08)', textPrimary: '#e4e4e7', textSecondary: '#a1a1aa', textHeading: '#ffffff', borderGlass: 'rgba(255,255,255,0.12)', primary: '#00d4ff', primaryDark: '#00a8cc', secondary: '#7b2ff7', accent: '#ff6b6b' },
-            navy:      { bg: '#0f1b3d', card: 'rgba(255,255,255,0.06)', glass: 'rgba(255,255,255,0.09)', textPrimary: '#c8d6e5', textSecondary: '#8395a7', textHeading: '#dfe6ed', borderGlass: 'rgba(100,150,255,0.15)', primary: '#48dbfb', primaryDark: '#0abde3', secondary: '#5f6ff7', accent: '#ff9f43' },
-            purple:    { bg: '#1a0a2e', card: 'rgba(255,255,255,0.05)', glass: 'rgba(255,255,255,0.08)', textPrimary: '#ddd0f0', textSecondary: '#a98fd4', textHeading: '#f0e6ff', borderGlass: 'rgba(180,100,255,0.15)', primary: '#bf5af2', primaryDark: '#9b3ed9', secondary: '#ff6bfa', accent: '#ff6b9d' },
             green:     { bg: '#0a1a0a', card: 'rgba(255,255,255,0.05)', glass: 'rgba(255,255,255,0.07)', textPrimary: '#c8e6c9', textSecondary: '#81c784', textHeading: '#e8f5e9', borderGlass: 'rgba(100,255,100,0.12)', primary: '#66ff66', primaryDark: '#44cc44', secondary: '#a5d6a7', accent: '#ffeb3b' },
             slate:     { bg: '#1e293b', card: 'rgba(255,255,255,0.06)', glass: 'rgba(255,255,255,0.09)', textPrimary: '#cbd5e1', textSecondary: '#94a3b8', textHeading: '#f1f5f9', borderGlass: 'rgba(150,180,220,0.12)', primary: '#f472b6', primaryDark: '#db2777', secondary: '#e879f9', accent: '#38bdf8' },
             bumblebee: { bg: '#fffbeb', card: 'rgba(0,0,0,0.04)', glass: 'rgba(0,0,0,0.05)', textPrimary: '#333', textSecondary: '#665c3e', textHeading: '#1a1400', borderGlass: 'rgba(0,0,0,0.1)', primary: '#e8a317', primaryDark: '#c4890e', secondary: '#f9d72f', accent: '#e87217' },
@@ -2149,6 +2260,68 @@
             applyTheme(hour >= 6 && hour < 18 ? 'light' : 'dark');
         }
 
+        // ===== FILE UPLOAD =====
+        (function() {
+            const dropArea = document.getElementById('fileUploadArea');
+            const fileInput = document.getElementById('fileInput');
+            const fileList = document.getElementById('fileList');
+
+            ['dragenter', 'dragover'].forEach(evt => {
+                dropArea.addEventListener(evt, e => { e.preventDefault(); dropArea.classList.add('dragover'); });
+            });
+            ['dragleave', 'drop'].forEach(evt => {
+                dropArea.addEventListener(evt, e => { e.preventDefault(); dropArea.classList.remove('dragover'); });
+            });
+
+            dropArea.addEventListener('drop', e => {
+                const dt = new DataTransfer();
+                // Keep existing files
+                Array.from(fileInput.files).forEach(f => dt.items.add(f));
+                // Add dropped files
+                Array.from(e.dataTransfer.files).forEach(f => dt.items.add(f));
+                fileInput.files = dt.files;
+                renderFileList();
+            });
+
+            fileInput.addEventListener('change', renderFileList);
+
+            function getFileIcon(name) {
+                const ext = name.split('.').pop().toLowerCase();
+                if (['jpg','jpeg','png','gif','svg','webp'].includes(ext)) return 'fa-image';
+                if (ext === 'pdf') return 'fa-file-pdf';
+                if (['doc','docx'].includes(ext)) return 'fa-file-word';
+                if (['xls','xlsx'].includes(ext)) return 'fa-file-excel';
+                if (['zip','rar','7z'].includes(ext)) return 'fa-file-archive';
+                return 'fa-file';
+            }
+
+            function renderFileList() {
+                fileList.innerHTML = '';
+                Array.from(fileInput.files).forEach((file, i) => {
+                    const chip = document.createElement('div');
+                    chip.className = 'file-chip';
+                    const size = file.size < 1024 * 1024
+                        ? (file.size / 1024).toFixed(0) + ' KB'
+                        : (file.size / (1024 * 1024)).toFixed(1) + ' MB';
+                    chip.innerHTML = `<i class="fas ${getFileIcon(file.name)}"></i> ${file.name} (${size}) <span class="remove-file" data-index="${i}"><i class="fas fa-times"></i></span>`;
+                    fileList.appendChild(chip);
+                });
+
+                fileList.querySelectorAll('.remove-file').forEach(btn => {
+                    btn.addEventListener('click', function() {
+                        const idx = parseInt(this.dataset.index);
+                        const dt = new DataTransfer();
+                        Array.from(fileInput.files).forEach((f, i) => { if (i !== idx) dt.items.add(f); });
+                        fileInput.files = dt.files;
+                        renderFileList();
+                    });
+                });
+            }
+
+            // Expose for form reset
+            window._renderFileList = renderFileList;
+        })();
+
         // ===== CONTACT FORM =====
         document.getElementById('contactForm').addEventListener('submit', function(e) {
             e.preventDefault();
@@ -2174,6 +2347,7 @@
                     status.className = 'form-status success';
                     btn.innerHTML = '<i class="fas fa-check"></i> Sent!';
                     this.reset();
+                    if (window._renderFileList) window._renderFileList();
                 } else {
                     throw new Error('Failed to send');
                 }

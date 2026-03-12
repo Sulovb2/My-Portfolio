@@ -16,7 +16,7 @@ A modern, single-page personal portfolio website with glassmorphism design, inte
 ## Features
 
 - **Particle Background** — Interactive canvas-based particles that connect on proximity and respond to mouse movement
-- **12 Themes** — Dark (default), Light, Navy, Purple, Green, Slate, Bumblebee, Cupcake, Retro, Emerald, Corporate, Cyberpunk
+- **10 Themes** — Dark (default), Light, Green, Slate, Bumblebee, Cupcake, Retro, Emerald, Corporate, Cyberpunk
 - **Scroll Reveal Animations** — Elements fade in as they enter the viewport using IntersectionObserver
 - **Typed Text Effect** — Rotating role titles in the hero section
 - **Responsive Design** — Mobile-friendly with hamburger menu and adaptive layouts
@@ -29,7 +29,7 @@ A modern, single-page personal portfolio website with glassmorphism design, inte
 | **Hero** | Animated intro with profile image, rotating titles, and stats |
 | **About** | Bio and skills cloud with 15 technologies |
 | **Projects** | Featured project cards with live demo and GitHub links |
-| **Contact** | Contact info, social links, and a working contact form |
+| **Contact** | Contact info, social links, and a working contact form with file attachments |
 
 ## Featured Projects
 
